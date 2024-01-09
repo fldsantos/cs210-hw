@@ -8,7 +8,7 @@ class Program
         int number = randomGenerator.Next(1, 11);
         int userNumber = 0;
 
-        Console.WriteLine($"{number} I'm thinking of a magic number! Can you guess it?");
+        Console.WriteLine($"I'm thinking of a magic number! Can you guess it?");
         userNumber = Convert.ToInt32(Console.ReadLine());
 
         while (userNumber != number) {
