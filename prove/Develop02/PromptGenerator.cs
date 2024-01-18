@@ -1,5 +1,0 @@
-using System;
-
-class PromptGenerator {
-
-}

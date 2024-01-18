@@ -14,7 +14,7 @@ class Program
         string choice = "";
 
         Journal myJournal = new Journal();
-        myJournal.loadEntries();
+        myJournal.LoadEntries();
 
         while (running) {
             System.Console.WriteLine("Please select one of the following choices:");
@@ -32,12 +32,12 @@ class Program
                     System.Console.WriteLine("Would you like to generate a prompt? (y/n)");
                     choice = Console.ReadLine();
                     if (choice=="y") {
-                        myJournal.addNewEntry(true);
+                        myJournal.AddNewEntry(true);
                         Console.WriteLine(myJournal._entries[myJournal._entries.Count-1]._prompt);
-                        myJournal.addTextToEntry(Console.ReadLine());
+                        myJournal.AddTextToEntry(Console.ReadLine());
                     } else {
-                        myJournal.addNewEntry();
-                        myJournal.addTextToEntry(Console.ReadLine());
+                        myJournal.AddNewEntry();
+                        myJournal.AddTextToEntry(Console.ReadLine());
                     }
                     
                     break;
@@ -48,12 +48,12 @@ class Program
 
                 case "3":
                     Console.WriteLine("Loading...");
-                    myJournal.loadEntries();
+                    myJournal.LoadEntries();
                     break;
 
                 case "4":
                     Console.WriteLine("Saving...");
-                    myJournal.saveEntries();
+                    myJournal.SaveEntries();
                     break;
 
                 case "5":

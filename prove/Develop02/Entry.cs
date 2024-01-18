@@ -9,15 +9,15 @@ class Entry {
 
     public Entry() {
         _date = DateTime.Today.ToString();
-        _prompt = getPrompt();
+        _prompt = GetPrompt();
     }
 
     public Entry(bool prompt) {
         _date = DateTime.Today.ToString("d");
-        _prompt = prompt?getPrompt():_prompt = "";
+        _prompt = prompt?GetPrompt():_prompt = "";
     }
 
-    public string getPrompt() {
+    public string GetPrompt() {
         string[] lines = System.IO.File.ReadAllLines(_filename);
         Random rnd = new Random();
 

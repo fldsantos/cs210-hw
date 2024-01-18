@@ -13,19 +13,19 @@ class Journal {
             i++;
         }
     }
-    public void addNewEntry() {
+    public void AddNewEntry() {
         _entries.Add(new Entry());
     }
 
-    public void addNewEntry(bool prompt) {
+    public void AddNewEntry(bool prompt) {
         _entries.Add(new Entry(prompt));
     }
 
-    public void addTextToEntry(string text) {
+    public void AddTextToEntry(string text) {
         _entries[_entries.Count-1]._text = text;
     }
 
-    public void saveEntries() {
+    public void SaveEntries() {
         using (StreamWriter outputFile = new StreamWriter(_filename)) {
             foreach (Entry entry in _entries) {
                 outputFile.WriteLine($"{entry._date}, {entry._prompt}, {entry._text}");
@@ -33,14 +33,14 @@ class Journal {
         }
     }
 
-    public void loadEntries() {
+    public void LoadEntries() {
         _entries.Clear();
         string[] lines = System.IO.File.ReadAllLines(_filename);
 
         foreach (string line in lines) {
             string[] parts = line.Split(",");
-            addNewEntry();
-            addTextToEntry(parts[2]);
+            AddNewEntry();
+            AddTextToEntry(parts[2]);
             _entries[_entries.Count-1]._date = parts[0];
             _entries[_entries.Count-1]._prompt = parts[1];
         }
@@ -48,6 +48,6 @@ class Journal {
 
     public void removeEntry(int index) {
         _entries.RemoveAt(index);
-        saveEntries();
+        SaveEntries();
     }
 }
