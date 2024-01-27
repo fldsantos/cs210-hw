@@ -9,6 +9,8 @@ class Program
         references.Add(new Reference("Moses", 1, 39));
         references.Add(new Reference("2 Nephi", 9, 28, 29));
         references.Add(new Reference("Alma", 34, 32, 34));
+        references.Add(new Reference("James", 1, 5, 6));
+        references.Add(new Reference("D&C", 82, 10));
 
         Scripture chosenScripture;
 
@@ -42,7 +44,7 @@ class Program
             Console.Clear();
             Console.WriteLine(chosenScripture.GetDisplayText());
             Console.WriteLine("Press enter to continue, or type 'quit' to exit the apllication.");
-            chosenScripture.HideRandomWords(15);
+            chosenScripture.HideRandomWords(10);
             choice = Console.ReadLine();
             if(choice.Equals("quit")) {
                 break;

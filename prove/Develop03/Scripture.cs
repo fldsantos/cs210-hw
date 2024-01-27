@@ -79,4 +79,8 @@ class Scripture {
 
         return count;
     }
+
+    public int GetWordsNumber() {
+        return _words.Count;
+    }
 }
