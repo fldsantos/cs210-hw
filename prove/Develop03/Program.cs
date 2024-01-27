@@ -41,7 +41,7 @@ class Program
         while((!chosenScripture.IsCompletelyHidden())) {
             Console.Clear();
             Console.WriteLine(chosenScripture.GetDisplayText());
-            Console.WriteLine("Type 'quit' to exit the apllication");
+            Console.WriteLine("Press enter to continue, or type 'quit' to exit the apllication.");
             chosenScripture.HideRandomWords(15);
             choice = Console.ReadLine();
             if(choice.Equals("quit")) {
@@ -52,7 +52,7 @@ class Program
         if (chosenScripture.IsCompletelyHidden()) {
             Console.Clear();
             Console.WriteLine(chosenScripture.GetDisplayText());
-            Console.WriteLine("Type 'quit' to exit the apllication");
+            Console.WriteLine("Press enter to continue, or type 'quit' to exit the apllication.");
             choice = Console.ReadLine();
         }
 
