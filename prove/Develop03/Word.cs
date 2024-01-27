@@ -25,4 +25,8 @@ class Word {
         }
         return repeated;
     }
+
+    public bool IsHidden() {
+        return _hidden;
+    }
 }
