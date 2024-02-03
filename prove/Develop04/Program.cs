@@ -10,7 +10,7 @@ class Program
 
         string choice = "";
 
-        while (choice!="quit") {
+        while (choice!= "4") {
             Console.WriteLine("Menu Options: ");
             Console.WriteLine(" 1.Start Breathing activity");
             Console.WriteLine(" 2.Start Reflection activity");
