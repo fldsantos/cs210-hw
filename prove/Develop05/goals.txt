@@ -1,0 +1,4 @@
+40:5
+SimpleGoal:simple:blablabla:2:True
+EternalGoal:eternal:blablabla:100
+ChecklistGoal:check:bla:100:0:3:200
