@@ -1,4 +1,3 @@
-40:5
-SimpleGoal:simple:blablabla:2:True
-EternalGoal:eternal:blablabla:100
-ChecklistGoal:check:bla:100:0:3:200
+0:0
+EternalGoal:Go to the gym:Complete my entire workout set:100
+ChecklistGoal:Take out the trash:Wake up early and take out the trash:50:0:3:100

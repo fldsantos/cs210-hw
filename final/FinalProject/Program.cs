@@ -4,6 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello FinalProject World!");
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+        Board b = new Board();
+        b.DisplayBoard();
     }
 }
