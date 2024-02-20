@@ -3,7 +3,7 @@ class Piece
     protected int _limit;
     protected int _xPosition;
     protected int _yPosition;
-    protected bool _isCaptured;
+    protected bool _isCaptured = false;
     public List<string> _availableSpots;
     protected string _color;
     protected string _pieceCharacter;
@@ -18,6 +18,10 @@ class Piece
     public string GetColor()
     {
         return _color;
+    }
+
+    public void setCaptured() {
+        _isCaptured = true;
     }
 
     public void UpdatePosition(int x, int y)

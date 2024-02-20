@@ -1,5 +1,9 @@
+using System.Text.RegularExpressions;
+
 class Board {
-    private List<Piece> _pieces;
+    private List<Piece> _capturedBlackPieces = new List<Piece>();
+    private List<Piece> _capturedWhitePieces = new List<Piece>();
+    private string _turn = "White";
     private string xInterpret = "ABCDEFGH";
     private Piece[,] _spots = new Piece[8, 8];
 
@@ -30,12 +34,28 @@ class Board {
 
         while(true) {
             DisplayBoard();
-            Console.Write("which should move? " );
+            Console.WriteLine("");
+            Console.Write($"{_turn}'s turn! What is your move? ");
+            Console.WriteLine("");
             inp = Console.ReadLine();
+
             ExecuteCommand(inp);
             Console.Clear();
         }
         
+    }
+
+    protected void DisplayCapturedWhitePieces() {
+        Console.Write("     Captured White Pieces: ");
+        foreach(Piece piece in _capturedWhitePieces) {
+            Console.Write($"{piece.Display()} ");
+        }
+    }
+    protected void DisplayCapturedBlackPieces() {
+        Console.Write("     Captured Black Pieces: ");
+        foreach(Piece piece in _capturedBlackPieces) {
+            Console.Write($"{piece.Display()} ");
+        }
     }
 
     public void DisplayBoard() {
@@ -51,6 +71,8 @@ class Board {
                 } else {
                     Console.Write("[  ]");
                 }
+                if(y==0 && x==7) {DisplayCapturedBlackPieces();} 
+                if(y==7 && x==7) {DisplayCapturedWhitePieces();}
 
             }
             Console.WriteLine("");
@@ -71,8 +93,22 @@ class Board {
             int yDestination = Int32.Parse(Char.ToString(destination[1]))-1;
 
             if(_spots[xLocation, yLocation]._availableSpots.Contains(destination.ToUpper())) {
-                _spots[xDestination, yDestination] = _spots[xLocation, yLocation];
-                _spots[xLocation, yLocation] = null;
+                if(_spots[xLocation, yLocation].GetColor() == _turn.ToLower()) {
+
+                    if(_spots[xDestination, yDestination]!=null){
+                        if(_spots[xDestination, yDestination].GetColor()=="white") {_capturedWhitePieces.Add(_spots[xDestination, yDestination]);} else {_capturedBlackPieces.Add(_spots[xDestination, yDestination]);}
+                        _spots[xDestination, yDestination] = null;
+                    }
+
+                    _spots[xDestination, yDestination] = _spots[xLocation, yLocation];
+
+                    _spots[xLocation, yLocation] = null;
+                    _turn = _turn=="White"?"Black":"White";
+                } else {
+                    Console.WriteLine($"It's not {_spots[xLocation, yLocation].GetColor()}'s turn!");
+                    Thread.Sleep(1000);
+                }
+                
             } else {
                 Console.WriteLine("Invalid Destination");
                 Thread.Sleep(1000);

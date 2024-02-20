@@ -1,9 +1,10 @@
 class Pawn : Piece
 {
     private bool _firstPlay = true;
+    private int _initialY;
     public Pawn(string color) : base(color)
     {
-        _limit = 1;
+        _limit = 2;
         _pieceCharacter = color == "white" ? "♙" : "♟";
     }
 
@@ -11,16 +12,22 @@ class Pawn : Piece
     {
         base.CheckAvailableSpots(_spots);
 
-        if(_color=="black") {
-            CheckDown(_spots, _limit);
-            CheckDownLeft(_spots, _limit);
-            CheckDownRight(_spots, _limit);
-        } else {
-            CheckUp(_spots, _limit);
-            CheckUpLeft(_spots, _limit);
-            CheckUpRight(_spots, _limit);
+        _initialY = _initialY==0?_yPosition:_initialY;
+
+        if(_firstPlay && (_initialY != _yPosition)) {
+            _firstPlay = false;
+            _limit = 1;
         }
 
+        if(_color=="black") {
+            CheckDown(_spots, _limit);
+            CheckDownLeft(_spots, 1);
+            CheckDownRight(_spots, 1);
+        } else {
+            CheckUp(_spots, _limit);
+            CheckUpLeft(_spots, 1);
+            CheckUpRight(_spots, 1);
+        }
         
     }
 
