@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 class Board
 {
     private Piece _configPiece = new Piece("white");
-
     private bool _checkmate = false;
     private List<Piece> _capturedBlackPieces = new List<Piece>();
     private List<Piece> _capturedWhitePieces = new List<Piece>();
@@ -120,8 +119,8 @@ class Board
         _configPiece.DistinctWhiteMovableSpots();
         _configPiece.DistinctBlackMovableSpots();
 
-        _configPiece.checkForThreatOnWhite(_whiteKingCoords, _spots);
-        _configPiece.checkForThreatOnBlack(_blackKingCoords, _spots);
+        _configPiece.CheckForThreatOnWhite(_whiteKingCoords, _spots);
+        _configPiece.CheckForThreatOnBlack(_blackKingCoords, _spots);
     }
 
     public void ExecuteCommand(string command)

@@ -25,10 +25,10 @@ class Piece
         return _color;
     }
 
-    public bool getWhiteKingSafety() {
+    public bool GetWhiteKingSafety() {
         return _whiteKingInCheck;
     }
-    public bool getBlackKingSafety() {
+    public bool GetBlackKingSafety() {
         return _blackKingInCheck;
     }
 
@@ -55,7 +55,7 @@ class Piece
         _allBlackMovableSpots = _allBlackMovableSpots.Distinct().ToList();
     }
 
-    public void checkForThreatOnWhite(int[] whiteKingCoords, Piece[,] _spots) {
+    public void CheckForThreatOnWhite(int[] whiteKingCoords, Piece[,] _spots) {
 
         bool check = false;
 
@@ -69,7 +69,7 @@ class Piece
         }
         _whiteKingInCheck = check;
     }
-    public void checkForThreatOnBlack(int[] blackKingCoords, Piece[,] _spots) {
+    public void CheckForThreatOnBlack(int[] blackKingCoords, Piece[,] _spots) {
         bool check = false;
 
         foreach(string spot in _allWhiteMovableSpots) {
@@ -95,7 +95,7 @@ class Piece
 
     
 
-    public void setCaptured() {
+    public void SetCaptured() {
         _isCaptured = true;
     }
 
