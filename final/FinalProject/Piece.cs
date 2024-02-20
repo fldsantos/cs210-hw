@@ -1,5 +1,10 @@
 class Piece
 {
+
+    protected static List<string> _allBlackMovableSpots = new List<string>();
+    protected static List<string> _allWhiteMovableSpots = new List<string>();
+    protected static bool _whiteKingInCheck = false;
+    protected static bool _blackKingInCheck = false;
     protected int _limit;
     protected int _xPosition;
     protected int _yPosition;
@@ -20,6 +25,76 @@ class Piece
         return _color;
     }
 
+    public bool getWhiteKingSafety() {
+        return _whiteKingInCheck;
+    }
+    public bool getBlackKingSafety() {
+        return _blackKingInCheck;
+    }
+
+    public List<string> GetAllWhiteMovableSpots() {
+        return _allWhiteMovableSpots;
+    }
+
+    public void ClearAllWhiteMovableSpots() {
+        _allWhiteMovableSpots.Clear();
+    }
+
+    public void DistinctWhiteMovableSpots(){
+        _allWhiteMovableSpots = _allWhiteMovableSpots.Distinct().ToList();
+    }
+    public List<string> GetAllBlackMovableSpots() {
+        return _allBlackMovableSpots;
+    }
+
+    public void ClearAllBlackMovableSpots() {
+        _allBlackMovableSpots.Clear();
+    }
+
+    public void DistinctBlackMovableSpots(){
+        _allBlackMovableSpots = _allBlackMovableSpots.Distinct().ToList();
+    }
+
+    public void checkForThreatOnWhite(int[] whiteKingCoords, Piece[,] _spots) {
+
+        bool check = false;
+
+        foreach(string spot in _allBlackMovableSpots) {
+            if($"{xInterpret[whiteKingCoords[0]]}{whiteKingCoords[1]+1}" == spot) {
+                Console.WriteLine("");
+                Console.WriteLine("Check!");
+                check = true;
+                break;
+            }
+        }
+        _whiteKingInCheck = check;
+    }
+    public void checkForThreatOnBlack(int[] blackKingCoords, Piece[,] _spots) {
+        bool check = false;
+
+        foreach(string spot in _allWhiteMovableSpots) {
+            if($"{xInterpret[blackKingCoords[0]]}{blackKingCoords[1]+1}" == spot) {
+                Console.WriteLine("Check!");
+                check = true;
+                break;
+            }
+        }
+
+        _blackKingInCheck = check;
+    }
+
+    /*public void RecalculateKingAvailableSpots(int[] whiteKingCoords, int[] blackKingCoords, Piece[,] _spots) {
+        //recalculating white king's spots
+        foreach(string spot in _spots[whiteKingCoords[0], whiteKingCoords[1]]._availableSpots) {
+            if(_allBlackMovableSpots.Contains(spot)) {
+                _spots[whiteKingCoords[0], whiteKingCoords[1]]._availableSpots.Remove(spot);
+                Console.WriteLine(spot);
+            }
+        }
+    }*/
+
+    
+
     public void setCaptured() {
         _isCaptured = true;
     }
@@ -37,6 +112,7 @@ class Piece
     public virtual void CheckAvailableSpots(Piece[,] _spots)
     {
         _availableSpots.Clear();
+        //_allMovableSpots.Clear();
     }
 
     protected virtual void CheckLeft(Piece[,] _spots, int limit)

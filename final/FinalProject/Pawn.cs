@@ -23,11 +23,15 @@ class Pawn : Piece
             CheckDown(_spots, _limit);
             CheckDownLeft(_spots, 1);
             CheckDownRight(_spots, 1);
+            _allBlackMovableSpots.AddRange(_availableSpots);
         } else {
             CheckUp(_spots, _limit);
             CheckUpLeft(_spots, 1);
             CheckUpRight(_spots, 1);
+            _allWhiteMovableSpots.AddRange(_availableSpots);
+
         }
+
         
     }
 

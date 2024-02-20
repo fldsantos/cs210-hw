@@ -16,6 +16,12 @@ class King : Piece {
         CheckDown(_spots, _limit);
         CheckLeft(_spots, _limit);
         CheckRight(_spots, _limit);
-
+        
+        if(_color == "white") {
+            _allWhiteMovableSpots.AddRange(_availableSpots);
+        } else {
+            _allBlackMovableSpots.AddRange(_availableSpots);
+        }
+        
     }
 }

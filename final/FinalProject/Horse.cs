@@ -10,6 +10,11 @@ class Horse : Piece
     {
         base.CheckAvailableSpots(_spots);
         CheckHorseSpots(_spots);
+        if(_color == "white") {
+            _allWhiteMovableSpots.AddRange(_availableSpots);
+        } else {
+            _allBlackMovableSpots.AddRange(_availableSpots);
+        }
 
     }
 

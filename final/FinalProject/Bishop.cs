@@ -12,6 +12,10 @@ class Bishop : Piece {
         CheckUpRight(_spots, _limit);
         CheckDownLeft(_spots, _limit);
         CheckDownRight(_spots, _limit);
-
+        if(_color == "white") {
+            _allWhiteMovableSpots.AddRange(_availableSpots);
+        } else {
+            _allBlackMovableSpots.AddRange(_availableSpots);
+        }
     }
 }
