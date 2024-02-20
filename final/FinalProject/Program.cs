@@ -7,7 +7,7 @@ class Program
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         string inp = "";
 
-        Board board = new Board();
+        Board board;
 
         while (inp != "4")
         {
@@ -23,6 +23,7 @@ class Program
             switch (inp)
             {
                 case "1":
+                    board = new Board();
                     board.Run();
                     break;
                 case "2":

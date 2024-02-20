@@ -30,7 +30,7 @@ class Board
         _spots[1, 7] = new Horse("white"); //Horse
         _spots[2, 7] = new Bishop("white"); //Bishop
         _spots[3, 7] = new Queen("white"); //Queen
-        _spots[4,7] = new King("white"); //King
+        _spots[4, 7] = new King("white"); //King
         _spots[5, 7] = new Bishop("white"); //Bishop
         _spots[6, 7] = new Horse("white"); //Horse
         _spots[7, 7] = new Tower("white"); //Tower
